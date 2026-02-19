@@ -1,4 +1,4 @@
-use std::io
+use std::io;
 
 fn main(){
 
@@ -12,7 +12,7 @@ fn main(){
         .read_line(&mut input1)
         .expect("Failed to read line!!!");
     
-    let n1: i32 = input1.trim().parse().expect("Please enter a valid number!!!") 
+    let n1: i32 = input1.trim().parse().expect("Please enter a valid number!!!"); 
 
     println!("Enter the 2nd number: ");
     
@@ -21,7 +21,7 @@ fn main(){
         .read_line(&mut input2)
         .expect("Failed to read line!!!");
     
-    let n2: i32 = input2.trim().parse().expect("Please enter a valid number!!!")
+    let n2: i32 = input2.trim().parse().expect("Please enter a valid number!!!");
 
     println!("---Main Menu---");
     println!("1. Sum");
@@ -35,15 +35,15 @@ fn main(){
     let mut choice = String::new();
     io::stdin()
         .read_line(&mut choice)
-        .expect("Failed to read line!!!")
+        .expect("Failed to read line!!!");
 
     match choice.trim(){
-        "1" => sum(n1, n2),
-        "2" => difference(n1, n2),
-        "3" => division(n1, n2),
-        "4" => product(n1, n2),
-        "5" => println!("Exiting.... Goodbye!");
-        _ => println!("Invalid choice. Please select 1,2,3,4 or 5.");
+        "1" => println!("Sum of {} and {} is {}.", n1, n2, sum(n1, n2)),
+        "2" => println!("Difference between {} and {} is {}.", n1, n2, difference(n1, n2)),
+        "3" => println!("{}/{} is {}.", n1, n2, division(n1, n2)),
+        "4" => println!("Product of {} and {} is {}.", n1, n2, product(n1, n2)),
+        "5" => println!("Exiting.... Goodbye!"),
+        _ => println!("Invalid choice. Please select 1,2,3,4 or 5."),
     }
 
 }
@@ -52,14 +52,14 @@ fn sum(n1: i32, n2: i32) -> i32 {
     n1 + n2
 }
 
-fn difference(n1: i32, n2: i32) -> {
+fn difference(n1: i32, n2: i32) -> i32 {
     (n1-n2).abs()
 }
 
-fn division(n1: i32, n2: i32) -> {
+fn division(n1: i32, n2: i32) -> i32 {
     n1/n2
 }
 
-fn product(n1: i32, n2: i32) -> {
+fn product(n1: i32, n2: i32) -> i32 {
     n1*n2
 }
