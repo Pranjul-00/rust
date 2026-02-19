@@ -31,8 +31,9 @@ fn main(){
     println!("3. Divison");
     println!("4. Product");
     println!("5. Exit");
+    println!("6. RUN ALL *_*");
     println!("---------------");
-    print!("Enter your choice (1,2,3,4 or 5): ");
+    print!("Enter your choice (1,2,3,4,5 or 6): ");
     io::stdout().flush().unwrap();
 
     let mut choice = String::new();
@@ -46,6 +47,12 @@ fn main(){
         "3" => println!("{}/{} is {}.", n1, n2, division(n1, n2)),
         "4" => println!("Product of {} and {} is {}.", n1, n2, product(n1, n2)),
         "5" => println!("Exiting.... Goodbye!"),
+        "6" => {
+            println!("Sum of {} and {} is {}.", n1, n2, sum(n1, n2));
+            println!("Difference between {} and {} is {}.", n1, n2, difference(n1, n2));
+            println!("{}/{} is {}.", n1, n2, division(n1, n2));
+            println!("Product of {} and {} is {}.", n1, n2, product(n1, n2));
+        }
         _ => println!("Invalid choice. Please select 1,2,3,4 or 5."),
     }
 
