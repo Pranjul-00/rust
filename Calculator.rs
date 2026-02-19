@@ -1,11 +1,12 @@
-use std::io;
+use std::io::{self, Write};
 
 fn main(){
 
     println!("WELCOME TO THIS BASIC CALCULATOR");
     println!("--------------------------------");
 
-    println!("Enter the 1st number: ");
+    print!("Enter the 1st number: ");
+    io::stdout().flush().unwrap();
     
     let mut input1 = String::new();
     io::stdin()
@@ -14,7 +15,8 @@ fn main(){
     
     let n1: i32 = input1.trim().parse().expect("Please enter a valid number!!!"); 
 
-    println!("Enter the 2nd number: ");
+    print!("Enter the 2nd number: ");
+    io::stdout().flush().unwrap();
     
     let mut input2 = String::new();
     io::stdin()
@@ -29,8 +31,9 @@ fn main(){
     println!("3. Divison");
     println!("4. Product");
     println!("5. Exit");
-    println!("Enter your choice (1,2,3,4 or 5): ");
     println!("---------------");
+    print!("Enter your choice (1,2,3,4 or 5): ");
+    io::stdout().flush().unwrap();
 
     let mut choice = String::new();
     io::stdin()
