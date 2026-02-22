@@ -20,8 +20,8 @@ fn main(){
         let guess: i32 = guess_input.trim().parse().expect("error: please provide valid input.");
 
         match guess.cmp(&sec_num){
-            Ordering::Less => println!("Too small.");
-            Ordering::Greater => println!("Too big.");
+            Ordering::Less => println!("Too small."),
+            Ordering::Greater => println!("Too big."),
             Ordering::Equal => {
                 println!("lessssgooooooooooo, you nailed it, the number was indeed {}.", sec_num);
                 break;
