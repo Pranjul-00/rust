@@ -59,6 +59,6 @@ fn main() {
 
     }
 
-    println!("{}", "/nExiting... Goodbye!!!!".red().italic());
+    println!("{}", "\nExiting... Goodbye!!!!".red().italic());
     println!("");
 }
