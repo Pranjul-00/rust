@@ -8,7 +8,7 @@ struct Task {
 
 fn main() {
     println!("");
-    println!("{}", "  Welcome to the To-Do List  ".red().on_blue().bold().italic());
+    println!("{}", "       Welcome to the To-Do List       ".red().on_blue().bold().italic());
 
     let mut tasks: Vec<Task> = Vec::new();
 
