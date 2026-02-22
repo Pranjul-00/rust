@@ -28,7 +28,10 @@ fn main() {
        }
 
        if input.to_lowercase() == "list" {
-           println!("{}", "          Your current tasks          ".green().on_yellow());
+
+           println!("");
+           println!("{}", "          Your current tasks          ".green().bold().italic());
+           println!("");
 
            if tasks.is_empty() {
                println!("{}", "You do not have any task!! GO RELAX".magenta().italic());
@@ -56,6 +59,6 @@ fn main() {
 
     }
 
-    println!("{}", "Exiting... Goodbye!!!!".red().italic());
+    println!("{}", "/nExiting... Goodbye!!!!".red().italic());
     println!("");
 }
