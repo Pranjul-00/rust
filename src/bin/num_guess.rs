@@ -1,4 +1,5 @@
 use std::cmp::Ordering;
+use rand::Rng;
 use std::io::{self, Write};
 
 fn main(){
@@ -6,7 +7,7 @@ fn main(){
     println!("Welcome to the number guessing game.");
     println!("------------------------------------");
 
-    let sec_num: i32 = 42;
+    let sec_num: i32 = rand::thread_rng().gen_range(1 .. = 100);
 
     loop {
         print!("Please enter your guess: ");
