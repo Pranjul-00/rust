@@ -35,9 +35,9 @@ fn main() {
            }
            else {
                for (index, task) in tasks.iter().enumerate() {
-                   let status_box = if task.completed { "[X]" } else { "[ ]" };
+                   let status_box = if task.completed { "[✅]" } else { "[❌]" };
 
-                   println!("{} {} {}", index + 1, ".", status_box, task.name);
+                   println!("{} {} {}", index + 1, status_box, task.name);
                }
            }
 
