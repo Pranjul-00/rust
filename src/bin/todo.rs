@@ -47,6 +47,30 @@ fn main() {
            continue;
        }
 
+       if input.to_lowercase.starts_with("done ") {
+
+           let num_str = input[5..].trim();
+
+           match num_str.parse::<usize>() {
+               Ok(task_num) => {
+                   if task_num > 0 && task_num <= task.len() {
+                       let index = task_num - 1;
+                       tasks[index].completed = true;
+
+                       println!("{}", "Task marked as completed.".green().bold());
+                   }
+                   else {
+                       println!("{}", "Oops!! That task number doesn't exist".red());
+                   }
+               }
+               Err(_) => {
+                   println!("{}", "Please provide a valid task number. like 'done 1'".red());
+               }
+           }
+
+           continue;
+       }
+
        let new_task = Task { name : input.to_string(), completed : false };
 
        tasks.push(new_task);
