@@ -13,7 +13,7 @@ fn main() {
     let mut tasks: Vec<Task> = Vec::new();
 
     loop {
-       print!("{}", "\nEnter a new task (or type 'quit' to exit or 'list' to show current tasks): ".cyan());
+       print!("{}", "\nEnter a command or task (type 'help' for options): ".cyan());
        io::stdout().flush().unwrap();
 
        let mut input = String::new();
@@ -27,60 +27,56 @@ fn main() {
            break;
        }
 
-       if input.to_lowercase() == "list" {
+       if input.to_lowercase() == "help" {
+           println!("\n{}", "--- Available Commands ---".yellow().bold());
+           println!("  {} - View your current tasks", "list".cyan());
+           println!("  {} - Mark a task as complete (e.g., 'done 1')", "done <#>\t".cyan());
+           println!("  {} - Exit the program", "quit".cyan());
+           println!("  (Anything else you type will be added as a new task)");
+           continue;
+       }
 
-           println!("");
-           println!("{}", "          Your current tasks          ".green().bold().italic());
+       if input.to_lowercase() == "list" {
+           println!("\n{}", "          Your current tasks          ".green().bold().italic());
            println!("");
 
            if tasks.is_empty() {
                println!("{}", "You do not have any task!! GO RELAX".magenta().italic());
-           }
-           else {
+           } else {
                for (index, task) in tasks.iter().enumerate() {
                    let status_box = if task.completed { "[✅]" } else { "[❌]" };
-
                    println!("{} {} {}", index + 1, status_box, task.name);
                }
            }
-
            continue;
        }
 
-       if input.to_lowercase.starts_with("done ") {
-
+       if input.to_lowercase().starts_with("done ") {
            let num_str = input[5..].trim();
 
            match num_str.parse::<usize>() {
                Ok(task_num) => {
-                   if task_num > 0 && task_num <= task.len() {
+                   if task_num > 0 && task_num <= tasks.len() {
                        let index = task_num - 1;
                        tasks[index].completed = true;
-
                        println!("{}", "Task marked as completed.".green().bold());
-                   }
-                   else {
+                   } else {
                        println!("{}", "Oops!! That task number doesn't exist".red());
                    }
                }
                Err(_) => {
-                   println!("{}", "Please provide a valid task number. like 'done 1'".red());
+                   println!("{}", "Please provide a valid task number, like 'done 1'".red());
                }
            }
-
            continue;
        }
 
-       let new_task = Task { name : input.to_string(), completed : false };
-
+       let new_task = Task { name: input.to_string(), completed: false };
        tasks.push(new_task);
 
-       println!("{}", "The task was has been added.".magenta().italic());
-
+       println!("{}", "The task has been added.".magenta().italic());
        let out_message = format!("You now have {} tasks in your list.", tasks.len());
-
        println!("{}", out_message.yellow());
-
     }
 
     println!("{}", "\nExiting... Goodbye!!!!".red().italic());
