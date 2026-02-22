@@ -13,7 +13,7 @@ fn main() {
     let mut tasks: Vec<Task> = Vec::new();
 
     loop {
-       print!("{}", "\nEnter a new task (or type 'quit' to exit): ".cyan());
+       print!("{}", "\nEnter a new task (or type 'quit' to exit or 'list' to show current tasks): ".cyan());
        io::stdout().flush().unwrap();
 
        let mut input = String::new();
@@ -28,14 +28,14 @@ fn main() {
        }
 
        if input.to_lowercase() == "list" {
-           println!("{}", "  Your current tasks  ",green().on_yellow());
+           println!("{}", "  Your current tasks  ".green().on_yellow());
 
            if tasks.is_empty() {
                println!("{}", "You do not have any task!! GO RELAX".magenta().italic());
            }
            else {
                for (index, task) in tasks.iter().enumerate() {
-                   let status_box = if task.completed { "[X]" } else { "[ ]" }
+                   let status_box = if task.completed { "[X]" } else { "[ ]" };
 
                    println!("{} {} {}", index + 1, status_box, task.name);
                }
