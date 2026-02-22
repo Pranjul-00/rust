@@ -1,0 +1,43 @@
+use std::io::{self, Write};
+use colored::*;
+
+struct Task {
+    name: String,
+    completed: bool,
+}
+
+fn main() {
+    println!("");
+    println!("{}", "  Welcome to the To-Do List  ".red().on_blue().bold().italic());
+
+    let mut tasks: Vec<Task> = Vec::new();
+
+    loop {
+       print!("{}", "\nEnter a new task (or type 'quit' to exit): ".cyan());
+       io::stdout().flush().unwrap();
+
+       let mut input = String::new();
+       io::stdin()
+           .read_line(&mut input)
+           .expect("Failed to read line");
+
+       let input = input.trim();
+
+       if input.to_lowercase() == "quit" {
+           break;
+       }
+
+       let new_task = Task { name : input.to_string(), completed : false };
+
+       tasks.push(new_task);
+
+       println!("{}", "The task was has been added.".magenta().italic());
+
+       let out_message = format!("You now have {} tasks in your list.", tasks.len());
+
+       println!("{}", out_message.yellow());
+
+    }
+
+    println!("{}", "Exiting... Goodbye!!!!".red().italic());
+}
