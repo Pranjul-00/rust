@@ -8,7 +8,7 @@ struct Task {
 
 fn main() {
     println!("");
-    println!("{}", "       Welcome to the To-Do List       ".red().on_blue().bold().italic());
+    println!("{}", "           Welcome to the To-Do List           ".red().on_blue().bold().italic());
 
     let mut tasks: Vec<Task> = Vec::new();
 
@@ -27,6 +27,23 @@ fn main() {
            break;
        }
 
+       if input.to_lowercase() == "list" {
+           println!("{}", "  Your current tasks  ",green().on_yellow());
+
+           if tasks.is_empty() {
+               println!("{}", "You do not have any task!! GO RELAX".magenta().italic());
+           }
+           else {
+               for (index, task) in tasks.iter().enumerate() {
+                   let status_box = if task.completed { "[X]" } else { "[ ]" }
+
+                   println!("{} {} {}", index + 1, status_box, task.name);
+               }
+           }
+
+           continue;
+       }
+
        let new_task = Task { name : input.to_string(), completed : false };
 
        tasks.push(new_task);
@@ -40,4 +57,5 @@ fn main() {
     }
 
     println!("{}", "Exiting... Goodbye!!!!".red().italic());
+    println!("");
 }
