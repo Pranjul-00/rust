@@ -8,7 +8,7 @@ fn main(){
     println!("{}", "Welcome to the number guessing game.".cyan().bold());
     println!("{}", "------------------------------------".cyan());
 
-    let sec_num: i32 = rand::thread_rng().gen_range(1..=100);
+    let sec_num: i32 = rand::thread_rng().gen_range(1..=1000);
 
     loop {
         print!("Please enter your guess: ");
