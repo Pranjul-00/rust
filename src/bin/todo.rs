@@ -66,7 +66,7 @@ fn main() {
        }
 
        if input.to_lowercase() == "help" {
-           println!("\n{}", "--- Available Commands ---".yellow().bold());
+           println!("\n{}", "         --- Available Commands ---".yellow().bold());
            println!("  {} - View your current tasks", "list".cyan());
            println!("  {} - Mark a task as complete (e.g., 'done 1')", "done <#>\t".cyan());
            println!("  {} - Exit the program", "quit".cyan());
