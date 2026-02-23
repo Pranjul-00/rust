@@ -48,7 +48,7 @@ fn main() {
     println!("");
     println!("{}", "           Welcome to the To-Do List           ".red().on_blue().bold().italic());
 
-    let mut tasks: Vec<Task> = Vec::new();
+    let mut tasks: Vec<Task> = load_tasks();
 
     loop {
        print!("{}", "\nEnter a command or task (type 'help' for options): ".cyan());
@@ -95,8 +95,12 @@ fn main() {
            match num_str.parse::<usize>() {
                Ok(task_num) => {
                    if task_num > 0 && task_num <= tasks.len() {
+
                        let index = task_num - 1;
+
                        tasks[index].completed = true;
+                       save_tasks(&tasks);
+
                        println!("{}", "Task marked as completed.".green().bold());
                    } else {
                        println!("{}", "Oops!! That task number doesn't exist".red());
@@ -111,6 +115,7 @@ fn main() {
 
        let new_task = Task { name: input.to_string(), completed: false };
        tasks.push(new_task);
+       save_tasks(&tasks);
 
        println!("{}", "The task has been added.".magenta().italic());
        let out_message = format!("You now have {} tasks in your list.", tasks.len());
