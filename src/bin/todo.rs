@@ -1,9 +1,23 @@
 use std::io::{self, Write};
+use std::fs;
 use colored::*;
 
 struct Task {
     name: String,
     completed: bool,
+}
+
+fn save_tasks(tasks: &Vec<Task>) {
+
+    let mut file_content = String::new();
+
+    for task in tasks {
+        let line = format!("{} | {}\n", task.name, task.completed);
+        file_content.push_str(&line);
+    }
+    
+    fs::write("todo.txt", file_content).expect("Failed to save tasks to file.")
+
 }
 
 fn main() {
