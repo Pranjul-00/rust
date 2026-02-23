@@ -20,6 +20,30 @@ fn save_tasks(tasks: &Vec<Task>) {
 
 }
 
+fn load_tasks() -> Vec<Task> {
+
+    let mut tasks = Vec::new();
+
+    if let Ok(content) = fs::read_to_string("todo.txt") {
+
+        for line in content.lines() {
+
+            let parts: Vec<&str> = line.split('|').collect();
+
+            if parts.len() == 2 {
+
+                let name = parts[0].to_string();
+                let completed = parts[1] == "true";
+
+                tasks.push(Task {name, completed})
+
+            }
+        }
+    }
+    
+    tasks
+}
+
 fn main() {
     println!("");
     println!("{}", "           Welcome to the To-Do List           ".red().on_blue().bold().italic());
