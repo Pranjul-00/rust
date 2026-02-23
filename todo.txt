@@ -1,5 +1,0 @@
-goon | false
-dance | false
-lol | true
-heya | false
-wtf | false
