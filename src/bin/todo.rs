@@ -69,10 +69,11 @@ fn main() {
            println!("\n{}", "         --- Available Commands ---".yellow().bold());
            println!("  {} - View your current tasks", "list".cyan());
            println!("  {} - Mark a task as complete (e.g., 'done 1')", "done <#>\t".cyan());
+           println!("  {} - Delete a task (e.g., 'delete 1')", "delete <#>".cyan()); // <-- NEW
            println!("  {} - Exit the program", "quit".cyan());
            println!("  (Anything else you type will be added as a new task)");
            continue;
-       }
+       } 
 
        if input.to_lowercase() == "list" {
            println!("\n{}", "          Your current tasks          ".green().bold().italic());
