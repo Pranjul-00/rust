@@ -32,8 +32,8 @@ fn load_tasks() -> Vec<Task> {
 
             if parts.len() == 2 {
 
-                let name = parts[0].to_string();
-                let completed = parts[1] == "true";
+                let name = parts[0].trim().to_string();
+                let completed = parts[1].trim() == "true";
 
                 tasks.push(Task {name, completed})
 
