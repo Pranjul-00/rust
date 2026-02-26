@@ -91,6 +91,7 @@ fn main() {
        }
 
        if input.to_lowercase().starts_with("done ") {
+
            let num_str = input[5..].trim();
 
            match num_str.parse::<usize>() {
@@ -112,6 +113,14 @@ fn main() {
                }
            }
            continue;
+       }
+        
+       if input.to_lowercase().starts_with("delete ") {
+
+            let num_str = input[7..].trim();
+
+            
+
        }
 
        let new_task = Task { name: input.to_string(), completed: false };
