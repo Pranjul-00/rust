@@ -126,7 +126,7 @@ fn main() {
 
                        let index = task_num - 1;
 
-                       tasks[index].delete();
+                       tasks.remove(index);
                        save_tasks(&tasks);
 
                        println!("{}", "Task has been deleted.".green().bold());
