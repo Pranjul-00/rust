@@ -104,7 +104,8 @@ fn main() {
                        save_tasks(&tasks);
 
                        println!("{}", "Task marked as completed.".green().bold());
-                   } else {
+                   } 
+                   else {
                        println!("{}", "Oops!! That task number doesn't exist".red());
                    }
                }
@@ -119,8 +120,26 @@ fn main() {
 
             let num_str = input[7..].trim();
 
-            
+           match num_str.parse::<usize>() {
+               Ok(task_num) => {
+                   if task_num > 0 && task_num <= tasks.len() {
 
+                       let index = task_num - 1;
+
+                       tasks[index].delete();
+                       save_tasks(&tasks);
+
+                       println!("{}", "Task has been deleted.".green().bold());
+                   }
+                   else {
+                       println!("{}", "Oops!! That task number doesn't exist.".red());
+                   }
+               }
+               Err(_) => {
+                   println!("{}", "Please provide a valid task number, like 'delete 1'".red());
+               }
+           }
+           continue;
        }
 
        let new_task = Task { name: input.to_string(), completed: false };
